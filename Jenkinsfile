@@ -18,7 +18,7 @@ pipeline{
         stage("init build params"){
             steps{
                 script{
-                    echo params.account
+                    echo params.cidr
                     setParams()
                 }
             }
