@@ -18,7 +18,8 @@ pipeline{
         stage("init build params"){
             steps{
                 script{
-                    addstring("hello","world")
+                    def name = addstring("hello","world")
+                    echo name
                     // setParams() // function
                 }
             }
