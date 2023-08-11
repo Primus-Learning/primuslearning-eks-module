@@ -1,10 +1,10 @@
 default_tags = {
-  Environment : ENV,
-  Team : TEAM,
-  Account : ACCOUNT,
+  Environment : "ENV",
+  Team : "TEAM",
+  Account : "ACCOUNT",
 }
 
-aws_region = REGION
+aws_region = "REGION"
 
 eks_vpc_cidr = CIDR
 eks_vpc_public_subnet_cidr =  PUBLIC
