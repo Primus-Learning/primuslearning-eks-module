@@ -18,8 +18,8 @@ pipeline{
         stage("init build params"){
             steps{
                 script{
-                    echo params.cidr
-                    setParams()
+                    addstring("hello","world")
+                    // setParams() // function
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline{
     }
 }
 
-void setParams(){
+boolean setParams(){
     sh"sed -i 's/ENV/${params.environment}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/TEAM/${params.team}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/ACCOUNT/${params.account}/g' $WORKSPACE/vars/terraform.tfvars"
@@ -60,4 +60,9 @@ void setParams(){
     sh"sed -i 's/MIN/${params.min}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/REGION/${params.region}/g' $WORKSPACE/versions.tf"
     sh"cat $WORKSPACE/vars/terraform.tfvars"
+}
+
+void addstring(String name1, String name2){
+  String name3= name1 + name2
+  return name3
 }
