@@ -6,6 +6,7 @@ pipeline{
         string(name: 'team', defaultValue: 'default', description: 'Team name')
         string(name: 'account', defaultValue: 'default', description: 'account name')
         string(name: 'region', defaultValue: 'us-east-1', description: 'region')
+        string(name: 'creds', defaultValue: '', description: 'credentials id')
         string(name: 'cidr', defaultValue: '', description: 'vpc cidr')
         string(name: 'public_cidr', defaultValue: '', description: 'public cidrs')
         string(name: 'private_cidr', defaultValue: '', description: 'private cidrs')
