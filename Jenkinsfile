@@ -27,7 +27,9 @@ pipeline{
             when { equals expected: 'build', actual: params.action }
             steps{
                 script{
-                    sh"ls -l"
+                    withAWS([credentials:"${params.creds}",region: "${params.region}"]){
+                        sh"ls -l"
+                    }
                 }
             }
         }
@@ -35,7 +37,9 @@ pipeline{
             when { equals expected: 'destroy', actual: params.action }
             steps{
                 script{
-                    sh"ls -l"
+                    withAWS([credentials:"${params.creds}",region: "${params.region}"]){
+                        sh"ls -l"
+                    }
                 }
             }
         }
@@ -53,5 +57,6 @@ void setParams(){
     sh"sed -i 's/DESIRED/${params.desired}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/MAX/${params.max}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/MIN/${params.min}/g' $WORKSPACE/vars/terraform.tfvars"
+    sh"sed -i 's/REGION/${params.region}/g' $WORKSPACE/versions.tf"
     sh"cat $WORKSPACE/vars/terraform.tfvars"
 }
