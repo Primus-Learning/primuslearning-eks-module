@@ -18,9 +18,7 @@ pipeline{
         stage("init build params"){
             steps{
                 script{
-                    def name = addstring("hello","world")
-                    echo name
-                    // setParams() // function
+                    setParams() // function
                 }
             }
         }
@@ -30,7 +28,7 @@ pipeline{
             steps{
                 script{
                     withAWS([credentials:"${params.creds}",region: "${params.region}"]){
-                        sh"ls -l"
+                        sh"aws s3 ls"
                     }
                 }
             }
@@ -61,10 +59,4 @@ boolean setParams(){
     sh"sed -i 's/MIN/${params.min}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/REGION/${params.region}/g' $WORKSPACE/versions.tf"
     sh"cat $WORKSPACE/vars/terraform.tfvars"
-}
-
-boolean addstring(String name1, String name2){
-  String name3= name1 + name2
-  String naem4= name2 + name1
-  return name3
 }
