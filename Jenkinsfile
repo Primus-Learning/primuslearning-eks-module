@@ -31,7 +31,7 @@ pipeline{
                         terraformInit()
                         sh"""
                         terraform plan -no-color -var-file $WORKSPACE/vars/terraform.tfvars
-                        terraform apply -no-color -auto-approve var-file $WORKSPACE/vars/terraform.tfvars
+                        terraform apply  -var-file $WORKSPACE/vars/terraform.tfvars -no-color -auto-approve
                         """
                     }
                 }
@@ -45,7 +45,7 @@ pipeline{
                     terraformInit()    
                     sh"""
                     terraform plan -no-color -var-file $WORKSPACE/vars/terraform.tfvars
-                    terraform destroy -no-color -auto-approve var-file $WORKSPACE/vars/terraform.tfvars
+                    terraform destroy -no-color -auto-approve -var-file $WORKSPACE/vars/terraform.tfvars
                     """
                     }
                 }
