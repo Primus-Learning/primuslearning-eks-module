@@ -20,7 +20,7 @@ pipeline{
                 script{
                     setParams() // function
                 }
-            }
+            }   
         }
 
         stage("Build Infrastructure"){
@@ -73,7 +73,7 @@ void terraformInit(){
     def tfworkspace = "${params.environment}-${params.team}"
     sh"""
     terraform init -no-color
-    terraform workspace select -no-color ${tfworkspace} || terraform workspace create -no-color ${tfworkspace}
+    terraform workspace select -no-color ${tfworkspace} || terraform workspace new -no-color ${tfworkspace}
     terraform workspace show -no-color
     terraform validate -no-color
     """
