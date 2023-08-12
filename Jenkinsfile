@@ -65,4 +65,5 @@ boolean setParams(){
 
 void addstring(String name1, String name2){
   String name3= name1 + name2
+  String naem4= name2 + name1
 }
