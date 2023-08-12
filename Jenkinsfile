@@ -66,6 +66,7 @@ void setParams(){
     sh"sed -i 's/MAX/${params.max}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/MIN/${params.min}/g' $WORKSPACE/vars/terraform.tfvars"
     sh"sed -i 's/REGION/${params.region}/g' $WORKSPACE/versions.tf"
+    sh"sed -i 's/REGION/${params.region}/g' $WORKSPACE/provider.tf"
     sh"cat $WORKSPACE/vars/terraform.tfvars"
 }
 
